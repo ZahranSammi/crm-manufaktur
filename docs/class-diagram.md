@@ -3,123 +3,123 @@ classDiagram
     %% Model Layer
     class Product {
         -int id
-        -String name
-        -double price
-        -int stock
+        -String nama
+        -double harga
+        -int stok
         +Product()
-        +Product(name, price, stock)
-        +Product(id, name, price, stock)
+        +Product(nama, harga, stok)
+        +Product(id, nama, harga, stok)
         +getId() int
         +setId(int) void
-        +getName() String
-        +setName(String) void
-        +getPrice() double
-        +setPrice(double) void
-        +getStock() int
-        +setStock(int) void
+        +getNama() String
+        +setNama(String) void
+        +getHarga() double
+        +setHarga(double) void
+        +getStok() int
+        +setStok(int) void
         +toString() String
     }
 
     class Customer {
         -int id
-        -String name
-        -String phone
+        -String nama
+        -String telepon
         +Customer()
-        +Customer(name, phone)
-        +Customer(id, name, phone)
+        +Customer(nama, telepon)
+        +Customer(id, nama, telepon)
         +getId() int
         +setId(int) void
-        +getName() String
-        +setName(String) void
-        +getPhone() String
-        +setPhone(String) void
+        +getNama() String
+        +setNama(String) void
+        +getTelepon() String
+        +setTelepon(String) void
         +toString() String
     }
 
     class Material {
         -int id
-        -String name
-        -int stock
+        -String nama
+        -int stok
         +Material()
-        +Material(name, stock)
-        +Material(id, name, stock)
+        +Material(nama, stok)
+        +Material(id, nama, stok)
         +getId() int
         +setId(int) void
-        +getName() String
-        +setName(String) void
-        +getStock() int
-        +setStock(int) void
+        +getNama() String
+        +setNama(String) void
+        +getStok() int
+        +setStok(int) void
         +toString() String
     }
 
     %% Repository Layer
     class ProductRepository {
-        -String DATA_FILE
+        -String FILE_PRODUK
         -Gson gson
-        +getAllProducts() List~Product~
-        +addProduct(Product) boolean
-        +deleteProduct(int) boolean
-        +findById(int) Product
-        +updateProduct(Product) boolean
-        +addStock(int, int) boolean
+        +ambilSemuaProduk() List~Product~
+        +tambahProduk(Product) boolean
+        +hapusProduk(int) boolean
+        +cariDenganId(int) Product
+        +updateProduk(Product) boolean
+        +tambahStok(int, int) boolean
     }
 
     class CustomerRepository {
-        -String DATA_FILE
+        -String FILE_CUSTOMER
         -Gson gson
-        +getAllCustomers() List~Customer~
-        +addCustomer(Customer) boolean
-        +deleteCustomer(int) boolean
-        +findById(int) Customer
+        +ambilSemuaCustomer() List~Customer~
+        +tambahCustomer(Customer) boolean
+        +hapusCustomer(int) boolean
+        +cariDenganId(int) Customer
     }
 
     class MaterialRepository {
-        -String DATA_FILE
+        -String FILE_MATERIAL
         -Gson gson
-        +getAllMaterials() List~Material~
-        +addMaterial(Material) boolean
-        +deleteMaterial(int) boolean
-        +findById(int) Material
-        +reduceStock(int, int) boolean
-        +addStock(int, int) boolean
+        +ambilSemuaMaterial() List~Material~
+        +tambahMaterial(Material) boolean
+        +hapusMaterial(int) boolean
+        +cariDenganId(int) Material
+        +kurangiStok(int, int) boolean
+        +tambahStok(int, int) boolean
     }
 
     %% UI Layer
     class ProductUI {
-        -ProductRepository productRepository
+        -ProductRepository repository
         -Scanner scanner
-        +showMenu() void
-        +showAllProducts() void
-        +addNewProduct() void
-        +deleteProduct() void
+        +tampilkanMenu() void
+        +lihatSemuaProduk() void
+        +tambahProdukBaru() void
+        +hapusProduk() void
     }
 
     class CrmUI {
-        -CustomerRepository customerRepository
+        -CustomerRepository repository
         -Scanner scanner
-        +showMenu() void
-        +showAllCustomers() void
-        +addNewCustomer() void
-        +deleteCustomer() void
+        +tampilkanMenu() void
+        +lihatSemuaCustomer() void
+        +tambahCustomerBaru() void
+        +hapusCustomer() void
     }
 
     class ManufacturingUI {
-        -MaterialRepository materialRepository
-        -ProductRepository productRepository
+        -MaterialRepository repoMaterial
+        -ProductRepository repoProduk
         -Scanner scanner
-        +showMenu() void
-        +checkMaterialStock() void
-        +addMaterialStock() void
-        +addNewMaterial() void
-        +produceProduct() void
+        +tampilkanMenu() void
+        +lihatStokBahan() void
+        +belanjaBahan() void
+        +tambahBahanBaru() void
+        +prosesProduksi() void
     }
 
-    %% Main
-    class Main {
+    %% Main Entry Point
+    class MainApp {
         -Scanner scanner
         +main(String[]) void
-        +printMainMenu() void
-        +getMenuChoice() int
+        +tampilkanMenuUtama() void
+        +bacaPilihanUser() int
     }
 
     %% Relationships
@@ -132,7 +132,7 @@ classDiagram
     ManufacturingUI --> MaterialRepository : uses
     ManufacturingUI --> ProductRepository : uses
     
-    Main --> ProductUI : creates
-    Main --> CrmUI : creates
-    Main --> ManufacturingUI : creates
+    MainApp --> ProductUI : creates
+    MainApp --> CrmUI : creates
+    MainApp --> ManufacturingUI : creates
 ```

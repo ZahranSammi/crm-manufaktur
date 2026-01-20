@@ -1,14 +1,8 @@
 [
   {
-    "id": 1,
-    "name": "Apakek",
-    "price": 300000.0,
-    "stock": 2
-  },
-  {
-    "id": 2,
-    "name": "sepatu",
-    "price": 300000.0,
-    "stock": 4
+    "id": 3,
+    "nama": "sepatu",
+    "harga": 300000.0,
+    "stok": 40
   }
 ]
