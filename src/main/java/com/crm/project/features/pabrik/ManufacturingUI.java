@@ -134,7 +134,7 @@ public class ManufacturingUI {
             return;
         }
 
-        Material bahan = repoMaterial.cariById(idBahan);
+        Material bahan = repoMaterial.cariDenganId(idBahan);
         if (bahan == null) {
             System.out.println("   ❌ Bahan dengan ID " + idBahan + " tidak ditemukan.\n");
             return;
@@ -224,7 +224,7 @@ public class ManufacturingUI {
             return;
         }
 
-        Material bahanTerpilih = repoMaterial.cariById(idBahan);
+        Material bahanTerpilih = repoMaterial.cariDenganId(idBahan);
         if (bahanTerpilih == null) {
             System.out.println("   ❌ Bahan tidak ditemukan.\n");
             return;
@@ -260,7 +260,7 @@ public class ManufacturingUI {
             return;
         }
 
-        Product produkTerpilih = repoProduk.cariById(idProduk);
+        Product produkTerpilih = repoProduk.cariDenganId(idProduk);
         if (produkTerpilih == null) {
             System.out.println("   ❌ Produk tidak ditemukan.\n");
             return;

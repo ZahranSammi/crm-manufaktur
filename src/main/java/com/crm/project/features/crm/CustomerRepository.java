@@ -49,7 +49,7 @@ public class CustomerRepository {
         return false;
     }
 
-    public Customer cariById(int idCustomer) {
+    public Customer cariDenganId(int idCustomer) {
         return ambilSemuaCustomer().stream()
                 .filter(customer -> customer.getId() == idCustomer)
                 .findFirst()

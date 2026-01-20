@@ -23,7 +23,7 @@ public class ProductRepository {
         return hasil != null ? hasil : new ArrayList<>();
     }
 
-    public boolean tambahProduct(Product produkBaru) {
+    public boolean tambahProduk(Product produkBaru) {
         List<Product> semuaProduk = ambilSemuaProduk();
 
         List<Integer> semuaId = semuaProduk.stream()
@@ -37,7 +37,7 @@ public class ProductRepository {
         return JsonDatabase.simpanSemuaData(FILE_PRODUK, semuaProduk);
     }
 
-    public boolean hapusProduct(int idProduk) {
+    public boolean hapusProduk(int idProduk) {
         List<Product> semuaProduk = ambilSemuaProduk();
 
         boolean berhasilHapus = semuaProduk.removeIf(
@@ -49,11 +49,26 @@ public class ProductRepository {
         return false;
     }
 
-    public Product cariById(int idProduk) {
+    public Product cariDenganId(int idProduk) {
         return ambilSemuaProduk().stream()
                 .filter(produk -> produk.getId() == idProduk)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public boolean updateProduk(Product produkUpdate) {
+        List<Product> semuaProduk = ambilSemuaProduk();
+
+        for (int i = 0; i < semuaProduk.size(); i++) {
+            Product produk = semuaProduk.get(i);
+
+            if (produk.getId() == produkUpdate.getId()) {
+                semuaProduk.set(i, produkUpdate);
+                return JsonDatabase.simpanSemuaData(FILE_PRODUK, semuaProduk);
+            }
+        }
+
+        return false;
     }
 
     public boolean tambahStok(int idProduk, int jumlahTambah) {

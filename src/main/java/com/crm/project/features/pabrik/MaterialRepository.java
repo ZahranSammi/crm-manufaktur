@@ -37,11 +37,23 @@ public class MaterialRepository {
         return JsonDatabase.simpanSemuaData(FILE_MATERIAL, semuaMaterial);
     }
 
-    public Material cariById(int idMaterial) {
+    public Material cariDenganId(int idMaterial) {
         return ambilSemuaMaterial().stream()
                 .filter(material -> material.getId() == idMaterial)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public boolean hapusMaterial(int idMaterial) {
+        List<Material> semuaMaterial = ambilSemuaMaterial();
+
+        boolean berhasilHapus = semuaMaterial.removeIf(
+                material -> material.getId() == idMaterial);
+
+        if (berhasilHapus) {
+            return JsonDatabase.simpanSemuaData(FILE_MATERIAL, semuaMaterial);
+        }
+        return false;
     }
 
     public boolean tambahStok(int idMaterial, int jumlahTambah) {

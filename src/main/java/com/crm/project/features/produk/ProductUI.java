@@ -119,7 +119,7 @@ public class ProductUI {
         }
 
         Product produkBaru = new Product(namaProduk, hargaProduk, stokProduk);
-        boolean berhasil = repository.tambahProduct(produkBaru);
+        boolean berhasil = repository.tambahProduk(produkBaru);
 
         if (berhasil) {
             System.out.println("\n   ✅ Produk '" + namaProduk + "' berhasil ditambahkan!");
@@ -169,7 +169,7 @@ public class ProductUI {
             return;
         }
 
-        boolean berhasil = repository.hapusProduct(idHapus);
+        boolean berhasil = repository.hapusProduk(idHapus);
 
         if (berhasil) {
             System.out.println("\n   ✅ Produk berhasil dihapus!");
