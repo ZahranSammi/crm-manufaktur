@@ -2,6 +2,11 @@
   {
     "id": 1,
     "nama": "wol",
-    "stok": 20
+    "stok": 40
+  },
+  {
+    "id": 2,
+    "nama": "Kayu",
+    "stok": 10
   }
 ]

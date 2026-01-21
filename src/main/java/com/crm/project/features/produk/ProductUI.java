@@ -80,6 +80,10 @@ public class ProductUI {
     private void tambahProdukBaru() {
         System.out.println("\n➕ ═══════════════════ TAMBAH PRODUK BARU ═══════════════════");
 
+        // ⚠️ ENFORCED: Stok awal = 0, produksi harus via menu Pabrik
+        System.out.println("   ℹ️  Info: Stok awal produk baru = 0.");
+        System.out.println("   📢 Untuk menambah stok, gunakan menu [Pabrik] → Produksi.\n");
+
         scanner.nextLine();
 
         System.out.print("   Nama Produk: ");
@@ -104,25 +108,15 @@ public class ProductUI {
             return;
         }
 
-        int stokProduk;
-        try {
-            System.out.print("   Stok Awal: ");
-            stokProduk = scanner.nextInt();
-            if (stokProduk < 0) {
-                System.out.println("   ❌ Error: Stok tidak boleh negatif.\n");
-                return;
-            }
-        } catch (InputMismatchException kesalahan) {
-            scanner.nextLine();
-            System.out.println("   ❌ Error: Format stok tidak valid.\n");
-            return;
-        }
+        // ✅ NO GOD MODE: Stok awal selalu 0 — harus produksi via Pabrik!
+        int stokProduk = 0;
 
         Product produkBaru = new Product(namaProduk, hargaProduk, stokProduk);
         boolean berhasil = repository.tambahProduk(produkBaru);
 
         if (berhasil) {
-            System.out.println("\n   ✅ Produk '" + namaProduk + "' berhasil ditambahkan!");
+            System.out.println("\n   ✅ Produk '" + namaProduk + "' berhasil ditambahkan dengan stok awal = 0!");
+            System.out.println("   📦 Silakan lakukan PRODUKSI di menu [Pabrik] untuk menambah stok.");
         } else {
             System.out.println("\n   ❌ Gagal menambahkan produk. Silakan coba lagi.");
         }
